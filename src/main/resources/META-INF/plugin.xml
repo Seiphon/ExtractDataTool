@@ -17,9 +17,16 @@
 		<toolWindow
 			anchor="right"
 			factoryClass="com.seiphon.extract.view.windows.NoteListWindowFactory"
-			id="notewindow"
+			icon="/icons/liferay.svg"
+			id="Note Window"
 		>
 		</toolWindow>
+
+		<notificationGroup
+			displayType="BALLOON"
+			id="Notification Group of EDT"
+		/>
+
 	</extensions>
 
 	<actions>

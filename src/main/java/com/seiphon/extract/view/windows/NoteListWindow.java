@@ -14,15 +14,10 @@
 
 package com.seiphon.extract.view.windows;
 
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationDisplayType;
-import com.intellij.notification.NotificationGroup;
-import com.intellij.notification.Notifications;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageDialogBuilder;
-import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 
@@ -30,6 +25,7 @@ import com.seiphon.extract.note.DataCenter;
 import com.seiphon.extract.processor.DefaultSourceNoteData;
 import com.seiphon.extract.processor.MDFreeMarkProcessor;
 import com.seiphon.extract.processor.Processor;
+import com.seiphon.extract.view.notification.Notificer;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,13 +78,7 @@ public class NoteListWindow {
 							processor.process(
 								new DefaultSourceNoteData(fileFullPath, topicTitleText, DataCenter.noteData));
 
-							NotificationGroup notificationGroup = new NotificationGroup(
-								"note_id", NotificationDisplayType.BALLOON, true);
-
-							Notification notification = notificationGroup.createNotification(
-								"Successfully generated document: " + fileFullPath, MessageType.INFO);
-
-							Notifications.Bus.notify(notification);
+							Notificer.notifyInfo(project, "Successfully generated document: " + fileFullPath);
 						}
 						catch (Exception exception) {
 							exception.printStackTrace();

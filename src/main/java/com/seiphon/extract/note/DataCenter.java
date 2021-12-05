@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class DataCenter {
 
-	public static String[] columHheader = {"Title", "annotation", "file name", "code fragment"};
+	public static String[] columHheader = {"Title", "Annotation", "File Name", "Code Fragment"};
 	public static String fileName;
 	public static List<NoteData> noteData = new LinkedList<>();
 	public static String selectedText;
